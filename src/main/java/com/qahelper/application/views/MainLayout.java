@@ -17,7 +17,7 @@ import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.Header;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.router.PageTitle;
-import com.qahelper.application.views.helloworld.QAHelperView;
+import com.qahelper.application.views.main.QAHelperView;
 import com.qahelper.application.views.about.AboutView;
 import com.vaadin.flow.component.avatar.Avatar;
 import com.qahelper.application.data.entity.User;

@@ -1,4 +1,4 @@
-package com.qahelper.application.views.helloworld;
+package com.qahelper.application.views.main;
 
 import com.qahelper.application.views.component.GetCustIdPage;
 import com.qahelper.application.views.component.GetDeviceUidPage;
