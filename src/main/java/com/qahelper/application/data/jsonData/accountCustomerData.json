@@ -1,0 +1,13 @@
+{
+  "idType": "NRIC",
+  "idNumber": "<insert_idNumber>",
+  "gender": "MALE",
+  "dateOfBirth": "1 January 1970",
+  "country": "Malaysia",
+  "countryCode": "MYS",
+  "address": "Boost HQ, Axiata Tower",
+  "residentialAddress": "No 1, Taman Ara Insan",
+  "mailingAddress": "No 1, Taman Ara Insan",
+  "occupation": "Actor / Actress",
+  "industry": "Advertising"
+}

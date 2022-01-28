@@ -10,7 +10,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import org.apache.commons.lang3.StringUtils;
 
-public class GetCustIdPage extends HorizontalLayout {
+public class ViewGetCustId extends HorizontalLayout {
 
     private Label titleLbl;
     private Label resultTextLbl;
@@ -18,13 +18,13 @@ public class GetCustIdPage extends HorizontalLayout {
     private Button findCustomerIdBtn;
     private Label resultLbl;
 
-    public GetCustIdPage(){
+    public ViewGetCustId(){
         titleLbl = new Label("Get customer ID :");
         resultTextLbl = new Label("Result :");
         msisdnTf = new TextField();
         msisdnTf.setPlaceholder("Eg: 0172430001");
         msisdnTf.setLabel("Insert MSISDN :");
-        findCustomerIdBtn = new Button("Find Customer ID");
+        findCustomerIdBtn = new Button("Submit");
         resultLbl = new Label();
 
         HorizontalLayout mainHL = new HorizontalLayout(msisdnTf, findCustomerIdBtn);

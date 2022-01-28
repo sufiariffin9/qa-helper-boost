@@ -1,0 +1,17 @@
+{
+    "customerId" : "<insert_customerId>",
+    "screeningId" : "<insert_screeningId>",
+    "nationality" : "United States of America",
+    "occupation" : "Actor / Actress",
+    "industry" : "Advertising",
+    "customerName" : "KEN CK",
+    "idNumber" : "<insert_idNumber>",
+    "eddFlag" : false,
+    "cddStatus" : "APPROVED",
+    "eddRequiredApprovalLevel" : 0,
+    "currentApprovalLevel" : 0,
+    "createdDate" : "2022-01-01T15:21:41+0800",
+    "modifiedDate" : "2022-01-01T15:21:41+0800",
+    "createdBy" : "SYSTEM",
+    "version" : 1
+}

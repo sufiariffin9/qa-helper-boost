@@ -1,8 +1,8 @@
 package com.qahelper.application.views.main;
 
-import com.qahelper.application.views.component.GetCustIdPage;
-import com.qahelper.application.views.component.GetDeviceUidPage;
-import com.qahelper.application.views.component.GetOtpPage;
+import com.qahelper.application.views.component.ViewGetCustId;
+import com.qahelper.application.views.component.ViewGetDeviceUid;
+import com.qahelper.application.views.component.ViewGetOtp;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
@@ -23,15 +23,15 @@ public class QAHelperView extends HorizontalLayout {
         VerticalLayout mainVL = new VerticalLayout();
 
         //add GetCustIdPage into main vertical layout
-        GetCustIdPage gci = new GetCustIdPage();
+        ViewGetCustId gci = new ViewGetCustId();
         mainVL.add(gci);
 
         //add GetOtpPage into main vertical layout
-        GetOtpPage gop = new GetOtpPage();
+        ViewGetOtp gop = new ViewGetOtp();
         mainVL.add(gop);
 
         //add GetDeviceUidPage into main vertical layout
-        GetDeviceUidPage gdup = new GetDeviceUidPage();
+        ViewGetDeviceUid gdup = new ViewGetDeviceUid();
         mainVL.add(gdup);
 
         //add to main vertical layout into QAHelperView horizontal layout

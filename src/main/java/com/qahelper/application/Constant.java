@@ -16,7 +16,7 @@ public class Constant {
     }
 
     public enum ServiceName{
-        Customer("customer");
+        Customer("customer"), Screening("screening");
         private String value;
 
         public String getResponse() {
@@ -28,5 +28,19 @@ public class Constant {
         }
     }
 
+    public enum Collection{
+        Customerprofile("customerprofile"), Signininformation("signininformation"), Deviceinformation("deviceinformation"), ScreeningCustomer("screening.customer");
+        private String value;
+
+        public String getResponse() {
+            return value;
+        }
+
+        Collection(String value){
+            this.value = value;
+        }
+    }
+
     public static final String MY_MOBILE_PREFIXES="+6";
+    public static final String COMMON_JSONDATA_PATH ="src/main/java/com/qahelper/application/data/jsonData/";
 }

@@ -1,0 +1,136 @@
+{
+    "customerId" : "<insert_customerId>",
+    "referenceNo" : "<insert_referenceNo>",
+    "kycType" : "WALLET_UPGRADE",
+    "cddType" : "STANDARD",
+    "cddStatus" : "APPROVED",
+    "eddFlag" : false,
+    "purposeOfTransaction" : "Payment",
+    "userInfo" : {
+        "fullName" : "Auto Patch",
+        "firstName" : "Auto",
+        "lastName" : "Patch",
+        "gender" : "MALE",
+        "dateOfBirth" : "1 January 1970",
+        "age" : 0,
+        "currentIdNumber" : "<insert_currentIdNumber>",
+        "idType" : "DRIVING_LICENSE",
+        "idNumber" : "<insert_idNumber>",
+        "currentFullName" : "Auto Patch",
+        "extractedFullName" : "Auto Patch",
+        "extractedIdNumber" : "<insert_extractedIdNumber>",
+        "extractedIdType" : "NRIC",
+        "nationality" : "Malaysia",
+        "nationalityCode" : "MYS",
+        "issueCountryCode" : "MYS",
+        "issueStateCode" : "MYS",
+        "expiryDate" : "28 May 2031",
+        "monthToExpire" : 0,
+        "occupation" : "Actor / Actress",
+        "industry" : "Advertising"
+    },
+    "walletInfo" : {
+        "currentWalletType" : "BASIC",
+        "requestDate" : "2022-01-01T15:20:22+0800"
+    },
+    "contactInfo" : {
+        "email" : "boostest21@gmail.com",
+        "msisdn" : "<insert_msisdn>",
+        "addressPerId" : "2345 Anywhere, Street, Your City, NY, 12345, United States",
+        "residentialAddress" : "No 1, Taman Ara Insan",
+        "mailingAddress" : "No 1, Taman Ara Insan",
+        "deviceNotificationId" : "fQgSyg0cSMq7fqCDpX8OW9:APA91bH79-cMdqRiazUT6heeV0wYVagKKa3fivO3AQRAzWrQ30Ba6AZEph_LXE8MnSvqj15TtjDbYNewd6y9pZgXgl7YqOSyUFd_Hm9R3gOS0JFfVQUjVRVpR_6I2wYJwyiBOV3jEmMX",
+        "notificationPlatform" : "gms"
+    },
+    "screeningAnalysis" : {
+        "identityDocumentFrontImageGfs" : {
+            "bucketName" : "id-front-original",
+            "objectId" : "614c2aff4b9c1c0c1ebd51ee"
+        },
+        "identityDocumentBackImageGfs" : {
+            "bucketName" : "id-back-original",
+            "objectId" : "614c2aff4b9c1c0c1ebd51f5"
+        },
+        "selfieImageS3" : {
+            "bucketName" : "boost-test-screening-image-selfie",
+            "objectKey" : "613efcabd75b742f35fa7373/614c29e24b9c1c0c1ebd51dd/b1256b97-f517-4bef-955b-8e116bde1edd-test.jpg"
+        },
+        "livenessVideoS3" : {
+            "bucketName" : "boost-test-screening-liveness-video",
+            "objectKey" : "613efcabd75b742f35fa7373/614c29e24b9c1c0c1ebd51dd/f0bb7948-3577-4df4-9414-7b603f0d859c-test.mp4"
+        },
+        "verificationProvider" : "onfido",
+        "onfidoData" : {
+            "applicantId" : "e7bc7708-83c9-4c0f-a2f1-ff8dd0e30344",
+            "applicationId" : "com.boostorium.test",
+            "onfidoChecks" : [ 
+                {
+                    "id" : "173ff7d6-2965-4244-9663-3f33c38842a3",
+                    "createdAt" : "2021-09-23T07:21:15Z",
+                    "href" : "/v3.2/checks/173ff7d6-2965-4244-9663-3f33c38842a3",
+                    "status" : "complete",
+                    "resultsUri" : "https://dashboard.onfido.com/checks/173ff7d6-2965-4244-9663-3f33c38842a3",
+                    "applicantId" : "e7bc7708-83c9-4c0f-a2f1-ff8dd0e30344",
+                    "reportIds" : [ 
+                        "06b6aabd-6934-4e70-a9ac-1abd32186baf", 
+                        "f0bf0576-617c-444d-a161-33e9ee7df2b1"
+                    ]
+                }
+            ],
+            "onfidoReports" : [ 
+                {
+                    "name" : "document_with_address_information",
+                    "id" : "f0bf0576-617c-444d-a161-33e9ee7df2b1",
+                    "checkId" : "173ff7d6-2965-4244-9663-3f33c38842a3",
+                    "status" : "complete",
+                    "uri" : "/v3.2/reports/f0bf0576-617c-444d-a161-33e9ee7df2b1",
+                    "createdAt" : "2021-09-23T07:21:15Z",
+                    "localReportId" : "614c2aff4b9c1c0c1ebd51fa"
+                }, 
+                {
+                    "name" : "facial_similarity_video",
+                    "id" : "06b6aabd-6934-4e70-a9ac-1abd32186baf",
+                    "checkId" : "173ff7d6-2965-4244-9663-3f33c38842a3",
+                    "status" : "complete",
+                    "uri" : "/v3.2/reports/06b6aabd-6934-4e70-a9ac-1abd32186baf",
+                    "createdAt" : "2021-09-23T07:21:15Z",
+                    "localReportId" : "614c2aff4b9c1c0c1ebd51f9"
+                }
+            ]
+        },
+        "processes" : {
+            "createChecks" : "COMPLETED",
+            "fetchData" : "COMPLETED",
+            "fetchReports" : "COMPLETED",
+            "faceSimilarity" : "PENDING",
+            "documentValidation" : "PENDING"
+        },
+        "faceSimilarityInfoList" : [ 
+            {
+                "customerId" : "614c277a0221710f8eb392dc",
+                "screeningId" : "614c2ee94b9c1c0c1ebd51fc",
+                "faceInfo" : {
+                    "faceId" : "85f1b504-b12e-4d2b-9f18-acff42967a05",
+                    "imageId" : "88f845d8-a221-3a36-b814-a66002f6e108",
+                    "externalImageId" : "614c277a0221710f8eb392dc.614c2ee94b9c1c0c1ebd51fc.4b37cd34-ef6a-4907-b7ad-57e5ffdaab34-test.jpg",
+                    "confidence" : 99.9984970092773
+                },
+                "similarity" : 99.9996185302734,
+                "matchedDate" : "2022-01-01T15:39:23+0800"
+            }
+        ]
+    },
+    "checkedBy" : "SYSTEM",
+    "checkedDate" : "2022-01-01T14:28:22+0800",
+    "status" : "APPROVED",
+    "platform" : "android",
+    "blocked" : false,
+    "revision" : 2,
+    "informedConsent" : false,
+    "createdDate" : "2022-01-01T15:16:52+0800",
+    "modifiedDate" : "2022-01-01T15:21:41+0800",
+    "modifiedBy" : "SYSTEM",
+    "channel" : "App",
+    "version" : 12,
+    "subStatus" : "SUSPECTED"
+}

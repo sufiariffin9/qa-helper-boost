@@ -14,7 +14,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GetDeviceUidPage extends HorizontalLayout {
+public class ViewGetDeviceUid extends HorizontalLayout {
 
     private Label titleLbl;
     private Label resultTextLbl;
@@ -24,7 +24,7 @@ public class GetDeviceUidPage extends HorizontalLayout {
     private Label resultLbl;
     private ComboBox platformCB;
 
-    public GetDeviceUidPage(){
+    public ViewGetDeviceUid(){
 
         List<String> platformAL = new ArrayList<>();
         platformAL.add("Android");
@@ -35,13 +35,13 @@ public class GetDeviceUidPage extends HorizontalLayout {
         platformCB.setLabel("Select platform :");
         platformCB.setAllowCustomValue(false);
 
-        titleLbl = new Label("Get device UID :");
+        titleLbl = new Label("Get device UID & Increase reg limit:");
         resultTextLbl = new Label("Result :");
         msisdnTf = new TextField();
         msisdnTf.setPlaceholder("Eg: 0172430001");
         msisdnTf.setLabel("Insert MSISDN :");
         getUIDBtn = new Button("Get UID");
-        incLimitBtn = new Button("Increase reg limit");
+        incLimitBtn = new Button("Increase Reg Limit");
         resultLbl = new Label();
 
         HorizontalLayout mainHL = new HorizontalLayout(platformCB, msisdnTf, getUIDBtn, incLimitBtn);

@@ -1,0 +1,17 @@
+{
+  "walletType": "PREMIUM",
+  "cddStatus": "APPROVED",
+  "cddType": "STANDARD",
+  "industry": "Advertising",
+  "occupation": "Actor / Actress",
+  "mailingAddress": "No 1, Taman Ara Insan",
+  "residentialAddress": "No 1, Taman Ara Insan",
+  "address": "Boost HQ, Axiata Tower",
+  "countryCode": "MYS",
+  "idNumber": "<insert_idNumber>",
+  "idType": "NRIC",
+  "isBiometricAuthenticationEnabled": "false",
+  "dateOfBirth": "1 January 1970",
+  "gender": "MALE",
+  "tncStatus": "AGREED"
+}

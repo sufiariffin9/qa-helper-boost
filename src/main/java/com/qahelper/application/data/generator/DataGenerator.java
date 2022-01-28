@@ -1,26 +1,17 @@
 package com.qahelper.application.data.generator;
 
-import com.vaadin.flow.spring.annotation.SpringComponent;
+import com.qahelper.application.Constant;
+import org.apache.commons.lang3.StringUtils;
 
-import com.qahelper.application.data.service.UserRepository;
-import com.qahelper.application.data.entity.User;
-import java.util.Collections;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import com.qahelper.application.data.Role;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Random;
 
-import java.time.LocalDateTime;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
-import com.vaadin.exampledata.DataType;
-import com.vaadin.exampledata.ExampleDataGenerator;
-
-@SpringComponent
 public class DataGenerator {
 
-    @Bean
+    /*@Bean
     public CommandLineRunner loadData(PasswordEncoder passwordEncoder, UserRepository userRepository) {
         return args -> {
             Logger logger = LoggerFactory.getLogger(getClass());
@@ -52,6 +43,27 @@ public class DataGenerator {
 
             logger.info("Generated demo data");
         };
+    }*/
+
+    /*public static void main (String[] args) throws IOException {
+        //DataGenerator test = new DataGenerator();
+        //String result = test.convertJsonToString( "screeningCustomerData.json");
+        System.out.println("Answer : "+ String.valueOf(randomNumGenerator(4)));
+    }*/
+
+    public static String convertJsonToString(String filename) throws IOException {
+        try {
+            return new String(Files.readAllBytes(Paths.get(Constant.COMMON_JSONDATA_PATH + filename)));
+        }catch (Exception e){
+            throw e;
+        }
+    }
+
+    public static int randomNumGenerator(int num) throws IOException{
+        System.out.println("Answer 1 : "+ Integer.valueOf(StringUtils.rightPad("1", num, "0")));
+        System.out.println("Answer 9 : "+ Integer.valueOf(StringUtils.rightPad("9", num, "9")));
+        int randomNum = Integer.valueOf(Integer.valueOf(StringUtils.rightPad("1", num, "0"))) + new Random().nextInt(Integer.valueOf(StringUtils.rightPad("9", num, "9")));
+        return Integer.valueOf(randomNum);
     }
 
 }

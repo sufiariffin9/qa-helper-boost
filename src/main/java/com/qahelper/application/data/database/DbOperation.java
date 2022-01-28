@@ -6,22 +6,26 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import com.qahelper.application.Constant;
+import com.qahelper.application.data.generator.DataGenerator;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
+
+import static com.qahelper.application.data.generator.DataGenerator.randomNumGenerator;
 
 public class DbOperation {
 
-    /*public static void main (String[] args){
+    /*public static void main (String[] args) throws IOException {
         DbOperation test = new DbOperation();
-        test.updateRegLimit("922194f8502a4173bc5442954d0e3fd8");
+        test.upgradePremium("61de3fe419534d0de84d62e5", "+60172430004");
     }*/
 
     public String getCustomerId(String msisdn){
-        String collection="customerprofile";
         String result = "No data";
         DbConnection dbcon = new DbConnection();
         MongoClient mongoClientSession = dbcon.getServiceDB(Constant.ServiceName.Customer.getResponse(), Constant.Env.Test.getResponse());
@@ -29,7 +33,7 @@ public class DbOperation {
         try {
             MongoDatabase database = mongoClientSession.getDatabase(Constant.ServiceName.Customer.getResponse());
 
-            MongoCollection<Document> customerprofile = database.getCollection(collection);
+            MongoCollection<Document> customerprofile = database.getCollection(Constant.Collection.Customerprofile.getResponse());
             Bson filters = Filters.and(Filters.eq("mobiles.msisdn", msisdn));
 
             List<Document> listDocuments = customerprofile.find(filters).into(new ArrayList<Document>());
@@ -54,7 +58,6 @@ public class DbOperation {
     }
 
     public String getCustomerOtp(String msisdn){
-        String collection="customerprofile";
         String result = "No data";
         DbConnection dbcon = new DbConnection();
         MongoClient mongoClientSession = dbcon.getServiceDB(Constant.ServiceName.Customer.getResponse(), Constant.Env.Test.getResponse());
@@ -62,7 +65,7 @@ public class DbOperation {
         try {
             MongoDatabase database = mongoClientSession.getDatabase(Constant.ServiceName.Customer.getResponse());
 
-            MongoCollection<Document> customerprofile = database.getCollection(collection);
+            MongoCollection<Document> customerprofile = database.getCollection(Constant.Collection.Customerprofile.getResponse());
             Bson filters = Filters.and(Filters.eq("mobiles.msisdn", msisdn));
 
             List<Document> listDocuments = customerprofile.find(filters).into(new ArrayList<Document>());
@@ -91,7 +94,6 @@ public class DbOperation {
     }
 
     public String getAndroidUid(String msisdn){
-        String collection="customerprofile";
         String result = "No data";
         DbConnection dbcon = new DbConnection();
         MongoClient mongoClientSession = dbcon.getServiceDB(Constant.ServiceName.Customer.getResponse(), Constant.Env.Test.getResponse());
@@ -99,7 +101,7 @@ public class DbOperation {
         try {
             MongoDatabase database = mongoClientSession.getDatabase(Constant.ServiceName.Customer.getResponse());
 
-            MongoCollection<Document> customerprofile = database.getCollection(collection);
+            MongoCollection<Document> customerprofile = database.getCollection(Constant.Collection.Customerprofile.getResponse());
             Bson filters = Filters.and(Filters.eq("mobiles.msisdn", msisdn));
 
             List<Document> listDocuments = customerprofile.find(filters).into(new ArrayList<Document>());
@@ -126,7 +128,6 @@ public class DbOperation {
     }
 
     public String getIosUid(String customerId){
-        String collection="signininformation";
         String result = "No data";
         DbConnection dbcon = new DbConnection();
         MongoClient mongoClientSession = dbcon.getServiceDB(Constant.ServiceName.Customer.getResponse(), Constant.Env.Test.getResponse());
@@ -134,10 +135,10 @@ public class DbOperation {
         try {
             MongoDatabase database = mongoClientSession.getDatabase(Constant.ServiceName.Customer.getResponse());
 
-            MongoCollection<Document> signininformation = database.getCollection(collection);
+            MongoCollection<Document> signinInformation = database.getCollection(Constant.Collection.Signininformation.getResponse());
             Bson filters = Filters.and(Filters.eq("customerId", customerId));
 
-            List<Document> listDocuments = signininformation.find(filters).into(new ArrayList<Document>());
+            List<Document> listDocuments = signinInformation.find(filters).into(new ArrayList<Document>());
 
             if(listDocuments.size() > 0) {
                 Document doc = listDocuments.get(listDocuments.size() - 1);
@@ -158,7 +159,6 @@ public class DbOperation {
     }
 
     public String updateRegLimit(String uid){
-        String collection="deviceinformation";
         String result = "Failed to Increase Reg Limit";
         DbConnection dbcon = new DbConnection();
         MongoClient mongoClientSession = dbcon.getServiceDB(Constant.ServiceName.Customer.getResponse(), Constant.Env.Test.getResponse());
@@ -166,7 +166,7 @@ public class DbOperation {
         try {
             MongoDatabase database = mongoClientSession.getDatabase(Constant.ServiceName.Customer.getResponse());
 
-            MongoCollection<Document> deviceinformation = database.getCollection(collection);
+            MongoCollection<Document> deviceinformation = database.getCollection(Constant.Collection.Deviceinformation.getResponse());
             Bson filters = Filters.and(Filters.eq("device.uid", uid));
 
             List<Document> listDocuments = deviceinformation.find(filters).into(new ArrayList<Document>());
@@ -182,6 +182,57 @@ public class DbOperation {
                 deviceinformation.updateMany(filters, updateObject);
 
                 result = "Successfully Increase Reg Limit";
+            }
+
+            System.out.println("Close mongoClientSession");
+            mongoClientSession.close();
+        }catch(Exception e) {
+            System.out.println("Close mongoClientSession");
+            mongoClientSession.close();
+            throw e;
+        }
+
+        return result;
+    }
+
+    public String upgradePremium(String customerId, String msisdn) throws IOException {
+        String result = "Failed to Upgrade Premium";
+        DbConnection dbcon = new DbConnection();
+        MongoClient mongoClientSession = dbcon.getServiceDB(Constant.ServiceName.Screening.getResponse(), Constant.Env.Test.getResponse());
+
+        try {
+            MongoDatabase database = mongoClientSession.getDatabase(Constant.ServiceName.Screening.getResponse());
+
+            MongoCollection<Document> screeningCustomer = database.getCollection(Constant.Collection.ScreeningCustomer.getResponse());
+            Bson filters = Filters.and(Filters.eq("customerId", customerId));
+
+            List<Document> listDocuments = screeningCustomer.find(filters).into(new ArrayList<Document>());
+
+            if(listDocuments.size() > 0) {
+                String rawSC = DataGenerator.convertJsonToString("screeningCustomerData.json");
+
+                Document mainDoc = Document.parse(rawSC);
+                mainDoc.replace("customerId", customerId);
+                mainDoc.replace("referenceNo", "SC00000"+String.valueOf(randomNumGenerator(5)));
+
+                System.out.println("Test :"+mainDoc.get("userInfo").toString());
+
+                Document userInfoDoc = (Document) mainDoc.get("userInfo");
+                userInfoDoc.replace("currentIdNumber", "70010105"+String.valueOf(randomNumGenerator(4)));
+                userInfoDoc.replace("idNumber", "70010105"+String.valueOf(randomNumGenerator(4)));
+                userInfoDoc.replace("extractedIdNumber", "70010105"+String.valueOf(randomNumGenerator(4)));
+
+                Document contactInfoDoc = (Document) mainDoc.get("contactInfo");
+                contactInfoDoc.replace("msisdn", msisdn);
+
+                mainDoc.put("userInfo", userInfoDoc);
+                mainDoc.put("contactInfo", contactInfoDoc);
+
+                System.out.println("------- Start JSON result --------");
+                System.out.println(mainDoc.toJson().toString());
+                System.out.println("------- End JSON result --------");
+
+                screeningCustomer.insertOne(mainDoc);
             }
 
             System.out.println("Close mongoClientSession");
