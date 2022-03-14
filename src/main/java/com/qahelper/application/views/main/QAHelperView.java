@@ -36,5 +36,7 @@ public class QAHelperView extends HorizontalLayout {
 
         //add to main vertical layout into QAHelperView horizontal layout
         add(mainVL);
+
+        System.out.print("test sonar");
     }
 }
