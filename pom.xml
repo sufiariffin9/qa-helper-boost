@@ -13,6 +13,11 @@
         <java.version>8</java.version>
         <vaadin.version>21.0.2</vaadin.version>
     </properties>
+    
+    <properties>
+      <sonar.organization>sufiariffin99</sonar.organization>
+      <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+    </properties>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
